@@ -1,0 +1,70 @@
+﻿@model IEnumerable<klovecore2.Models.Employee>
+
+@{
+    ViewData["Title"] = "Employees";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+
+</p>
+<form asp-action="Create" method="get">
+    <input type="hidden" />
+    <input type="submit" value="Create New" class="btn btn-primary" onclick="" />
+</form>
+<p>
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Name)
+                </td>
+                <td>
+                    <form asp-action="Edit" asp-route-id="@item.EmployeeID" method="get">
+                        <input type="hidden" />
+                        <input type="submit" value="Edit" class="btn btn-primary" onclick="" />
+                    </form> |
+                    <form asp-action="Details" asp-route-id="@item.EmployeeID" method="get">
+                        <input type="hidden" />
+                        <input type="submit" value="Details" class="btn btn-primary" onclick="" />
+                    </form> |
+                    <form asp-action="Delete" asp-route-id="@item.EmployeeID" method="get">
+                        <input type="hidden" />
+                        <input type="submit" value="Delete" class="btn btn-primary" onclick="" />
+                    </form>            
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
